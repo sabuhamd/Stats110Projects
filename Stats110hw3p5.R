@@ -1,0 +1,7 @@
+ThreeCars = read.table("C:/ThreeCars.txt", fill = TRUE, header = TRUE)
+library(ggplot2)
+ggplot(ThreeCars, aes(y = Price, x = Mileage)) + geom_point()
+model_ThreeCars = lm(Price ~ Mileage, data = ThreeCars)
+res = resid(model_ThreeCars)
+plot(fitted(model_ThreeCars), res) + abline(0,0)
+qqnorm(res) + qqline(res)

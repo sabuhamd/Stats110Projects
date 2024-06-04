@@ -1,0 +1,16 @@
+pulse = read.table("C:/pulse.txt", fill = TRUE, header = TRUE)
+model_pulse = lm(Rest ~ Hgt + Wgt + Smoke + Hgt*Wgt, data = pulse)
+summary(model_pulse)
+sse <- sum((fitted(model_pulse) - pulse$Rest)^2)
+sse
+model_reduced = lm(Rest ~ Hgt + Smoke, data = pulse)
+anova(model_reduced, model_pulse)
+anova(model_pulse)
+anova(model_reduced)
+model_height = lm(Rest ~ Hgt, data = pulse)
+anova(model_height)
+install.packages('ggplot2')
+library(ggplot2)
+ggplot(model_pulse, aes(y = residuals, x = fitted.values(model_pulse )) + geom_point() 
+       
+summary(pulse$Wgt)
